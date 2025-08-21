@@ -91,6 +91,6 @@ Implemented circuit breaker patterns and retry mechanisms with exponential backo
 
 ---
 
-**💼 Available for similar projects** | **📧 calindotgabriel18@gmail.com** | **💰 €60-80/hour**
+**💼 Available for similar projects** | **📧 calindotgabriel18@gmail.com** 
 
 *Specializing in NestJS microservices, MongoDB optimization, and high-performance data processing systems.*
