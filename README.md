@@ -21,11 +21,11 @@ High-performance data processing platform for Germany's largest energy company. 
 
 **Backend:** NestJS, TypeScript, MongoDB, Redis, Node.js Streams
 
-**Microservices:** Distributed across AWS ECS and Lambda functions
+**Microservices:** Distributed across Azure Container Instances and Azure Functions
 
 **Data Processing:** MongoDB aggregation pipelines, streaming transforms
 
-**Infrastructure:** AWS ECS, Application Load Balancer, ElastiCache, DocumentDB
+**Infrastructure:** Azure Container Instances, Application Gateway, Azure Cache for Redis, Azure Cosmos DB
 
 ## 🔧 Microservices Design
 
@@ -37,6 +37,13 @@ Our team built modular NestJS services with clear separation of concerns:
 - **Data Processing Service:** Real-time market data ingestion and transformation
 - **User Management Service:** Authentication and role-based access control
 - **Analytics Service:** Query performance tracking and usage metrics
+
+### NestJS Framework Selection
+I had significant leverage in selecting NestJS as our primary framework due to its:
+- **Dependency Injection:** Built-in IoC container that simplified service management and testing
+- **Testing Capabilities:** Comprehensive testing utilities with mocking and dependency injection support
+- **TypeScript Integration:** Native TypeScript support that improved code quality and developer experience
+- **Modular Architecture:** Clean separation of concerns that aligned with our microservices approach
 
 ### Streaming CSV Export System
 **Challenge:** Legacy system took 45+ minutes to export large datasets, causing memory issues and timeouts.
@@ -55,24 +62,24 @@ Our team designed complex aggregation pipelines for energy market analysis:
 - **Cursor Batching:** Configurable batch sizes based on document complexity and memory constraints
 
 ### NestJS Service Communication
-**Inter-Service Messaging:** We used Redis pub/sub for real-time updates and SQS for reliable async processing
-**Dependency Injection:** Leveraged NestJS DI container for clean service boundaries and testability
+**Inter-Service Messaging:** We used Azure Service Bus for reliable messaging and Redis for real-time updates
+**Dependency Injection:** Leveraged NestJS DI container for clean service boundaries and comprehensive testability
 **Guards & Interceptors:** Custom authentication guards and logging interceptors across all services
 **Exception Handling:** Centralized error handling with custom exception filters our team implemented
 
-### Lambda Integration for Peak Processing
-**Serverless Workers:** We implemented AWS Lambda functions for burst processing during peak export periods
-**Event-Driven Scaling:** Lambda functions triggered by SQS messages when ECS capacity reaches limits
+### Azure Functions Integration for Peak Processing
+**Serverless Workers:** We implemented Azure Functions for burst processing during peak export periods
+**Event-Driven Scaling:** Functions triggered by Service Bus messages when Container Instances reach capacity limits
 **Cost Optimization:** Serverless architecture reduces costs during low-demand periods while maintaining performance
-**Hybrid Architecture:** Seamless integration between ECS containers and Lambda functions for optimal resource utilization
+**Hybrid Architecture:** Seamless integration between Container Instances and Azure Functions for optimal resource utilization
 
 ## 📊 Performance Improvements
 
 - **Export Time:** Reduced from 45+ minutes to 12 minutes for large datasets
-- **Memory Usage:** 90% reduction in peak memory consumption during exports
+- **Memory Usage:** Significant reduction in peak memory consumption during exports
 - **Concurrent Processing:** Support for 50+ simultaneous export jobs
 - **Query Performance:** Optimized aggregation pipelines with proper indexing strategy
-- **Serverless Scaling:** Lambda functions handle 200+ concurrent export requests during peak hours
+- **Serverless Scaling:** Azure Functions handle 200+ concurrent export requests during peak hours
 
 ## 🚀 Technical Challenges We Solved
 
@@ -86,10 +93,10 @@ We built sophisticated MongoDB pipelines that join multiple collections, perform
 Our team designed service communication patterns using NestJS modules where export requests trigger workflows across multiple services without tight coupling.
 
 ### Scalable Worker Architecture
-We created auto-scaling export workers using AWS ECS that spin up based on queue depth and processing time metrics, ensuring consistent performance during peak usage.
+We created auto-scaling export workers using Azure Container Instances that spin up based on queue depth and processing time metrics, ensuring consistent performance during peak usage.
 
-### Lambda Cold Start Optimization
-Our team implemented connection pooling and provisioned concurrency for critical Lambda functions, reducing response times during burst processing scenarios.
+### Azure Functions Cold Start Optimization
+Our team implemented connection pooling and pre-warmed instances for critical Azure Functions, reducing response times during burst processing scenarios.
 
 ### Error Recovery & Resilience
 We implemented circuit breaker patterns and retry mechanisms with exponential backoff for handling MongoDB connection issues and temporary service unavailability.
@@ -103,5 +110,5 @@ We implemented circuit breaker patterns and retry mechanisms with exponential ba
 
 **💼 Available for similar projects** | **📧 calindotgabriel18@gmail.com** 
 
-*Specializing in NestJS microservices, MongoDB optimization, AWS Lambda, and high-performance data processing systems.*
+*Specializing in NestJS microservices, MongoDB optimization, Azure Functions, and high-performance data processing systems.*
 
